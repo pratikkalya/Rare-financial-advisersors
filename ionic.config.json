@@ -1,0 +1,7 @@
+{
+  "name": "FUNDZBAZAR",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
