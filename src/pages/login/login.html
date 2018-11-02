@@ -1,27 +1,22 @@
 <ion-header>
-
-  <ion-navbar>
-   
+  <ion-navbar color="primary" >
+    <ion-title>Login Details</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content>
+  <br>
   <img src = "../assets/imgs/title.png"/>
   <br><br><br><br>
+  <form (ngSubmit)="onLogin()">
     <ion-item>
-      <ion-label color="primary" stacked>User Name</ion-label>
-      <ion-input type="text" #username placeholder="Enter User Name"></ion-input>
+      <ion-label color="primary" floating>Email :</ion-label>
+      <ion-input type="email" #username [(ngModel)]="myData.email" name="email"></ion-input>
     </ion-item>
     <ion-item>
-        <ion-label color="primary" stacked>Password</ion-label>
-        <ion-input type="password" #password placeholder="Enter Password"></ion-input>
-    </ion-item>
-    <ion-item>
-          <button ion-button color="secondary">Login</button>
-    </ion-item>
-    <!-- <ion-item>
-        <button ion-button color="secondary" (click)="onLogin()">Login</button>
-    </ion-item> -->
+        <ion-label color="primary" floating>Password :</ion-label>
+        <ion-input type="password" #password [(ngModel)]="myData.password" name="password"></ion-input>
+    </ion-item><br>
+          <button ion-button color="primary" round >Login</button>
+  </form>
 </ion-content>

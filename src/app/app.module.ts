@@ -8,6 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { RegistrationPage } from '../pages/registration/registration';
 import { LoginPage } from '../pages/login/login';
+import { UserloginPage } from '../pages/userlogin/userlogin';
 import { HttpModule } from '@angular/http';
 import { RestProvider } from '../providers/rest/rest';
 @NgModule({
@@ -15,7 +16,8 @@ import { RestProvider } from '../providers/rest/rest';
     MyApp,
     HomePage,
     RegistrationPage,
-    LoginPage
+    LoginPage,
+    UserloginPage
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,8 @@ import { RestProvider } from '../providers/rest/rest';
     MyApp,
     HomePage,
     RegistrationPage,
-    LoginPage
+    LoginPage,
+    UserloginPage,
   ],
   providers: [
     StatusBar,

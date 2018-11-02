@@ -1,6 +1,6 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="danger" >
     <ion-title>Registration Details</ion-title>
   </ion-navbar>
 </ion-header>
@@ -22,7 +22,6 @@
   <ion-item *ngIf="email.hasError('required') && email.touched">
       <p>*Email is Required</p>
     </ion-item>
-  
   <ion-item>
     <ion-label color="primary" floating>Enter Password :</ion-label>
     <ion-input type="Password" formControlName="password" [(ngModel)]="data.password" name="password"></ion-input>
@@ -71,8 +70,8 @@
             </ion-item>
             <ion-item *ngIf="address.hasError('required') && address.touched">
               <p>*Address is Required</p>
-            </ion-item>
-    <button ion-button color="dark">Register</button>
+            </ion-item><br>
+    <button ion-button color="primary" round block>Register</button>
     
   </form>
 </ion-content>

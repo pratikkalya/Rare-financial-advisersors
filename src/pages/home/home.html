@@ -7,7 +7,7 @@
 </ion-header>
 
 <ion-content style="background:gray">
-  <ion-slides pager="true" (ionSlideDidChange)="slideChanged()">
+  <ion-slides  pager="true" (ionSlideDidChange)="slideChanged()">
         <ion-slide>
           <img src = "../assets/imgs/1.jpg"/>
         </ion-slide>
@@ -28,7 +28,7 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <button ion-button round (click)="loadLoginPage()">Login</button>
-    <button ion-button round color="secondary" (click)="loadRegistrationPage()">Signup</button>
+    <button ion-button round (click)="loadLoginPage()" style="margin-left:37%">Login</button>  
+    <div>Don't have an account?<button ion-button small color="secondary" (click)="loadRegistrationPage()">Signup</button></div>
   </ion-toolbar>
 </ion-footer>
