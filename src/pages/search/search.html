@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Fund Details</ion-title>
+  </ion-navbar>
+</ion-header>
+  <ion-content>
+      <ion-card *ngFor = "let data of users?.data">
+          <ion-card-content>
+             <h1>{{data.fund_name}}</h1>
+             <h2>{{data.launch_date}}</h2>
+             <h3>{{data.fund_scheme}}</h3>
+             <h4>{{data.category_name}}</h4>
+          </ion-card-content>
+   </ion-card>
+  </ion-content>
+  

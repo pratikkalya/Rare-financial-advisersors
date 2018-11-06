@@ -1,12 +1,38 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-        <img src = "../assets/imgs/title.png"/>
-    </ion-title>
-  </ion-navbar>
-</ion-header>
+    <ion-navbar color="primary">
+      <button ion-button menuToggle icon-only>
+        <ion-icon name='menu'></ion-icon>
+      </button>
+      <ion-title>
+        Rare Financial Advisors
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
 
-<ion-content style="background:gray">
+  <ion-menu [content]="content">
+      <ion-header>
+        <ion-toolbar color="secondary">
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <button ion-item (click)="signupPage()">
+           <b>Signup</b> 
+          </button>
+          <button ion-item (click)="loginPage()">
+            <b>Login</b>
+          </button>
+          <button ion-item (click)="searchPage()">
+           <b>Search</b>
+          </button>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-nav id="nav" #content [root]="rootPage"></ion-nav>
+
+<ion-content>
+    <img src = "../assets/imgs/title.png"/>
   <ion-slides  pager="true" (ionSlideDidChange)="slideChanged()">
         <ion-slide>
           <img src = "../assets/imgs/1.jpg"/>
@@ -24,11 +50,10 @@
           <img src = "../assets/imgs/5.jpg"/>
         </ion-slide>
   </ion-slides>
- 
 </ion-content>
 <ion-footer>
   <ion-toolbar>
     <button ion-button round (click)="loadLoginPage()" style="margin-left:37%">Login</button>  
-    <div>Don't have an account?<button ion-button small color="secondary" (click)="loadRegistrationPage()">Signup</button></div>
+    <div>&nbsp; &nbsp; &nbsp; Don't have an account?<button ion-button small color="secondary" (click)="loadRegistrationPage()">Signup</button></div>
   </ion-toolbar>
 </ion-footer>

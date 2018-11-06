@@ -1,5 +1,5 @@
 import { Component , OnInit} from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Http ,Headers, RequestOptions} from '@angular/http';
 import {FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
@@ -26,7 +26,7 @@ export class RegistrationPage implements OnInit{
   // restapiService: any;
   data :any = {};
    
-    constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, public restProvider: RestProvider, public fb : FormBuilder) {
+    constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, public restProvider: RestProvider, public fb : FormBuilder, public toastController:ToastController) {
       this.http = http;
     }
 
@@ -62,15 +62,20 @@ export class RegistrationPage implements OnInit{
     headers.append("Content-Type", "application/json");
     headers.append("Accept", "application/json");
     let options = new RequestOptions({ headers:headers});
-    var api = "http://192.168.100.3:8000/api/register";
-    var myData = JSON.stringify({name: this.data.name, email:this.data.email, password:this.data.password, c_password:this.data.c_password, phone_no: this.data.phone_no,bank_name: this.data.bank_name,account_no: this.data.account_no,pan_no: this.data.pan_no,address: this.data.address,});
-
- return this.http.post(api, myData, options).subscribe(data => {
-  console.log(data);
-  this.navCtrl.push(HomePage);
-  console.log("You register sucessfully !!");
- },error => {
-  console.log(error);
-});
-}
+    var api = "http://192.168.100.4:8000/api/register";
+    var myData = JSON.stringify({name: this.data.name, email:this.data.email, password:this.data.password, c_password:this.data.c_password, phone_no: this.data.phone_no,bank_name: this.data.bank_name,account_no: this.data.account_no,pan_no: this.data.pan_no,address: this.data.address});
+    
+    return this.http.post(api, myData, options).subscribe(data => {
+      let addToast = this.toastController.create({
+        message:"Registration Sucessfull !!",
+        duration:3000
+      });
+      addToast.present();
+      console.log(data);
+      this.navCtrl.push(HomePage);
+      console.log("You register sucessfully !!");
+    },error => {
+      console.log(error);
+    });
+    }
 }

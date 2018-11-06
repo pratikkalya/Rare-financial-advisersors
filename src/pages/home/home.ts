@@ -2,6 +2,7 @@ import { Component , ViewChild} from '@angular/core';
 import { IonicPage, NavController, NavParams ,Slides} from 'ionic-angular';
 import { RegistrationPage } from '../registration/registration';
 import { LoginPage } from '../login/login';
+import { SearchPage } from '../search/search';
 import { RestProvider } from '../../providers/rest/rest';
 @IonicPage()
 @Component({
@@ -12,15 +13,7 @@ export class HomePage {
   users: any;
   @ViewChild(Slides) slides: Slides;
   constructor(public navCtrl: NavController,  public restProvider: RestProvider,public navParams: NavParams) {
-    // this.getUsers();
   }
-  // getUsers() {
-  //   this.restProvider.getUsers()
-  //   .then(data => {
-  //     this.users = data;
-  //     console.log(this.users);
-  //   });
-  //}
   slideChanged() {
     let currentIndex = this.slides.getActiveIndex();
     console.log('Current index is', currentIndex);
@@ -34,5 +27,14 @@ export class HomePage {
   }
   loadLoginPage(){
     this.navCtrl.push(LoginPage);
+  }
+  signupPage(){
+    this.navCtrl.push(RegistrationPage);
+  }
+  loginPage(){
+    this.navCtrl.push(LoginPage);
+  }
+  searchPage(){
+    this.navCtrl.push(SearchPage);
   }
 }
