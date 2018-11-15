@@ -1,25 +1,41 @@
-import { Component , OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HttpClient } from '@angular/common/http';
-import { SearchrestProvider } from '../../providers/searchrest/searchrest';
+import { Component } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
+import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
-@IonicPage()
+
 @Component({
   selector: 'page-search',
   templateUrl: 'search.html',
 })
-export class SearchPage implements OnInit{
-  users: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http:HttpClient, public searchrestProvider:SearchrestProvider) {
+export class SearchPage{
+  users: any[];
+  apiUrl = 'http://192.168.100.6:8000/api/FundHouseall';
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http) { 
+    let apiData = this.http.get(this.apiUrl).map(res=>res.json().data);
+    apiData.subscribe(data => {
+      this.users=data;
+      console.log(this.users);},
+      err => {
+      console.log(err);
+      });
   }
   ionViewDidLoad() {
      console.log('ionViewDidLoad SearchPage');
   }
-  ngOnInit() {
-    this.searchrestProvider.getUsers()
-    .then(data => {
-    this.users = data;
-    console.log(this.users);
-    });
+  // ngOnInit() {
+  //   this.searchrestProvider.getUsers()
+  //   .then(data => {
+  //   this.users = data;
+  //   console.log(this.users);
+  //   });
+  //   }
+    toggleSection(i){
+      this.users[i].open = !this.users[i].open;
+      console.log(i);
     }
-}
+    toggleItem(i, j){
+      this.users[i].categories[j].open= !this.users[i].categories[j].open;
+      console.log(i, j);
+    }
+  }
+  

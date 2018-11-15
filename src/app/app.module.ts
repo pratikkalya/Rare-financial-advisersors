@@ -3,7 +3,6 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { RegistrationPage } from '../pages/registration/registration';
@@ -13,38 +12,44 @@ import { SearchPage } from '../pages/search/search';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { RestProvider } from '../providers/rest/rest';
-import { SearchrestProvider } from '../providers/searchrest/searchrest';
+
 
 @NgModule({
-  declarations: [
+  declarations:
+  [
     MyApp,
     HomePage,
     RegistrationPage,
     LoginPage,
     UserloginPage,
     SearchPage,
+
   ],
-  imports: [
+  imports:
+  [
     BrowserModule,
     HttpModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
-  entryComponents: [
+  entryComponents:
+  [
     MyApp,
     HomePage,
     RegistrationPage,
     LoginPage,
     UserloginPage,
     SearchPage,
+
   ],
-  providers: [
+  providers:
+  [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestProvider,
-    SearchrestProvider,
+
   ]
 })
-export class AppModule {}
+export class AppModule{}

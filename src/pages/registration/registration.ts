@@ -1,10 +1,10 @@
 import { Component , OnInit} from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { Http ,Headers, RequestOptions} from '@angular/http';
 import {FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
 import { HomePage } from '../home/home';
-@IonicPage()
+
 @Component({
   selector: 'page-registration',
   templateUrl: 'registration.html',
@@ -29,9 +29,7 @@ export class RegistrationPage implements OnInit{
     constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http, public restProvider: RestProvider, public fb : FormBuilder, public toastController:ToastController) {
       this.http = http;
     }
-
-  
-    ngOnInit() {
+    ngOnInit(){
     this.formVar = this.fb.group({
       name:['', Validators.required],
       email: ['', Validators.required],
@@ -62,7 +60,7 @@ export class RegistrationPage implements OnInit{
     headers.append("Content-Type", "application/json");
     headers.append("Accept", "application/json");
     let options = new RequestOptions({ headers:headers});
-    var api = "http://192.168.100.4:8000/api/register";
+    var api = "http://192.168.100.6:8000/api/register";
     var myData = JSON.stringify({name: this.data.name, email:this.data.email, password:this.data.password, c_password:this.data.c_password, phone_no: this.data.phone_no,bank_name: this.data.bank_name,account_no: this.data.account_no,pan_no: this.data.pan_no,address: this.data.address});
     
     return this.http.post(api, myData, options).subscribe(data => {

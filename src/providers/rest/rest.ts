@@ -11,7 +11,7 @@ export class RestProvider {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       headers.append('Authorization', "Bearer " + token );  
-      this.http.post("http://192.168.100.4:8000/api/login", JSON.stringify(myData), {headers: headers})
+      this.http.post("http://192.168.100.6:8000/api/login", JSON.stringify(myData), {headers: headers})
         .subscribe(res => {
          resolve(res.json());
         }, (err) => {

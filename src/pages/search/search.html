@@ -4,13 +4,33 @@
   </ion-navbar>
 </ion-header>
   <ion-content>
-      <ion-card *ngFor = "let data of users?.data">
-          <ion-card-content>
-             <h1>{{data.fund_name}}</h1>
-             <h2>{{data.launch_date}}</h2>
-             <h3>{{data.fund_scheme}}</h3>
-             <h4>{{data.category_name}}</h4>
-          </ion-card-content>
-   </ion-card>
-  </ion-content>
+    <ion-list class="accordion-list">
+      <ion-list-header *ngFor = "let data of users; let i = index" no-lines no-padding>
+        <button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active':data.open, 'section':!data.open}">
+          <ion-icon item-left name="arrow-dropright" *ngIf="!data.open"></ion-icon>
+          <ion-icon item-left name="arrow-dropdown" *ngIf="data.open"></ion-icon>
+           <h1>{{data.fund_name}}</h1>
+           <p text-lowercase>{{data.launch_date}}</p>
+        </button>
+        <ion-list *ngIf="data.categories && data.open" no-lines>
+            <ion-list-header *ngFor = "let child of data.categories; let j = index" no-padding>
+                <button ion-item (click)="toggleItem(i, j)" detail-none  [ngClass]="{'section-active':child.open, 'section':!child.open}">
+                    <ion-icon item-left name="add-circle" *ngIf="!child.open"></ion-icon>
+                    <ion-icon item-left name="close-circle" *ngIf="child.open"></ion-icon>
+                    <h2>{{child.fund_scheme}}</h2>
+                </button>
+                  <!-- <ion-item **ngIf="child.fundtype && child.open" detail-none Class="child-item" text-wrap>
+                    <h2> {{item.category_name}} </h2>
+                  </ion-item>
+                   -->
+                   <ion-list *ngIf="child.fundtype && child.open" no-lines no-padding>
+                      <ion-item *ngFor = "let item of child.fundtype;">
+                          <h3>{{item.category_name}}</h3>
+                      </ion-item>
+                  </ion-list>
+            </ion-list-header>
+        </ion-list>
+      </ion-list-header>
+    </ion-list>
+</ion-content>
   

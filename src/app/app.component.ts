@@ -7,22 +7,24 @@ import { HomePage } from '../pages/home/home';
 @Component({
   templateUrl: 'app.html'
 })
-export class MyApp {
+export class MyApp
+{
   rootPage:any = HomePage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, menu: MenuController) {
-    platform.ready().then(() => {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, menu: MenuController)
+  {
+      platform.ready().then(() =>
+      {
         menu.enable(true);
-      // Okay, so the platform is ready and our plugins are available.
-      // Here you can do any higher level native things you might need.
-      // platform.registerBackButtonAction(() => {
-      //   platform.exitApp();
-      // });
-      
-      statusBar.styleLightContent()
-      splashScreen.hide();
-    });
+        // Okay, so the platform is ready and our plugins are available.
+        // Here you can do any higher level native things you might need.
+        // platform.registerBackButtonAction(() => {
+        //   platform.exitApp();
+        // });
+        statusBar.styleLightContent()
+        splashScreen.hide();
+      });
   }
-  
+
 }
 

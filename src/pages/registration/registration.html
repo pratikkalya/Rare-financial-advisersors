@@ -1,77 +1,74 @@
 <ion-header>
-
   <ion-navbar color="danger" >
     <ion-title>Registration Details</ion-title>
   </ion-navbar>
 </ion-header>
-
-
 <ion-content>
-<form [formGroup]="formVar" (ngSubmit)="saveUser()">
-  <ion-item>
-    <ion-label color="primary" floating>Name :</ion-label>
-    <ion-input  type="text" formControlName="name" [(ngModel)]="data.name" name="name"></ion-input>
-  </ion-item>
-  <ion-item *ngIf="name.hasError('required') && name.touched">
-    <p>*Name is Required</p>
-  </ion-item>
-  <ion-item>
-    <ion-label color="primary" floating>Email :</ion-label>
-    <ion-input  type="text" formControlName="email" [(ngModel)]="data.email" name="email"></ion-input>
-  </ion-item>
-  <ion-item *ngIf="email.hasError('required') && email.touched">
-      <p>*Email is Required</p>
+  <form [formGroup]="formVar" (ngSubmit)="saveUser()">
+    <ion-item>
+      <ion-label color="primary" floating>Name :</ion-label>
+      <ion-input  type="text" formControlName="name" [(ngModel)]="data.name" name="name"></ion-input>
     </ion-item>
-  <ion-item>
-    <ion-label color="primary" floating>Password :</ion-label>
-    <ion-input type="Password" formControlName="password" [(ngModel)]="data.password" name="password"></ion-input>
-  </ion-item>
-  <ion-item *ngIf="password.hasError('required') && password.touched">
-      <p>*Password is Required</p>
-    </ion-item>
-  <ion-item>
-    <ion-label color="primary" floating>Confirm Password :</ion-label>
-    <ion-input  type="Password" formControlName="c_password" [(ngModel)]="data.c_password" name="c_password"></ion-input>
-  </ion-item>
-  <ion-item *ngIf="c_password.hasError('required') && c_password.touched">
-      <p>*Confirm Password is Required</p>
+    <ion-item *ngIf="name.hasError('required') && name.touched">
+      <p>*Name is Required</p>
     </ion-item>
     <ion-item>
-      <ion-label color="primary" floating>Mobile No :</ion-label>
-      <ion-input type="number" formControlName="phone_no" [(ngModel)]="data.phone_no" name="phone_no"></ion-input>
+      <ion-label color="primary" floating>Email :</ion-label>
+      <ion-input  type="text" formControlName="email" [(ngModel)]="data.email" name="email"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="email.hasError('required') && email.touched">
+        <p>*Email is Required</p>
+    </ion-item>
+    <ion-item>
+        <ion-label color="primary" floating>Password :</ion-label>
+        <ion-input type="Password" formControlName="password" [(ngModel)]="data.password" name="password"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="password.hasError('required') && password.touched">
+        <p>*Password is Required</p>
+    </ion-item>
+    <ion-item>
+          <ion-label color="primary" floating>Confirm Password :</ion-label>
+          <ion-input  type="Password" formControlName="c_password" [(ngModel)]="data.c_password" name="c_password"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="c_password.hasError('required') && c_password.touched">
+        <p>*Confirm Password is Required</p>
+    </ion-item>
+    <ion-item>
+        <ion-label color="primary" floating>Mobile No :</ion-label>
+        <ion-input type="number" formControlName="phone_no" [(ngModel)]="data.phone_no" name="phone_no"></ion-input>
     </ion-item>
     <ion-item *ngIf="phone_no.hasError('required') && phone_no.touched">
-        <p>*Phone Number is Required</p>
-      </ion-item>
-      <ion-item>
-        <ion-label color="primary" floating>Bank Name :</ion-label>
-        <ion-input type="text" formControlName="bank_name" [(ngModel)]="data.bank_name" name="bank_name"></ion-input>
-      </ion-item>
-      <ion-item *ngIf="bank_name.hasError('required') && bank_name.touched">
-          <p>*Bank Name is Required</p>
-        </ion-item>
-        <ion-item>
-          <ion-label color="primary" floating>Bank Account Number :</ion-label>
-          <ion-input type="number" formControlName="account_no" [(ngModel)]="data.account_no" name="account_no"></ion-input>
-        </ion-item>
-        <ion-item *ngIf="account_no.hasError('required') && account_no.touched">
+          <p>*Phone Number is Required</p>
+    </ion-item>
+    <ion-item>
+          <ion-label color="primary" floating>Bank Name :</ion-label>
+          <ion-input type="text" formControlName="bank_name" [(ngModel)]="data.bank_name" name="bank_name"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="bank_name.hasError('required') && bank_name.touched">
+            <p>*Bank Name is Required</p>
+    </ion-item>
+    <ion-item>
+            <ion-label color="primary" floating>Bank Account Number :</ion-label>
+            <ion-input type="number" formControlName="account_no" [(ngModel)]="data.account_no" name="account_no"></ion-input>
+    </ion-item>
+    <ion-item *ngIf="account_no.hasError('required') && account_no.touched">
             <p>*Bank Account Number is Required</p>
-          </ion-item>
-          <ion-item>
+    </ion-item>
+    <ion-item>
             <ion-label color="primary" floating>Pan No :</ion-label>
             <ion-input type="text" formControlName="pan_no" [(ngModel)]="data.pan_no" name="pan_no"></ion-input>
-          </ion-item>
-          <ion-item *ngIf="pan_no.hasError('required') && pan_no.touched">
-              <p>*Pan No is Required</p>
-            </ion-item>
-            <ion-item>
-              <ion-label color="primary" floating>Address :</ion-label>
-              <ion-textarea formControlName="address" [(ngModel)]="data.address" name="address"></ion-textarea>
-            </ion-item>
-            <ion-item *ngIf="address.hasError('required') && address.touched">
-              <p>*Address is Required</p>
-            </ion-item><br>
-             <button ion-button color="primary" round >Register</button>
-    
+    </ion-item>
+    <ion-item *ngIf="pan_no.hasError('required') && pan_no.touched">
+            <p>*Pan No is Required</p>
+    </ion-item>
+    <ion-item>
+            <ion-label color="primary" floating>Address :</ion-label>
+            <ion-textarea formControlName="address" [(ngModel)]="data.address" name="address"></ion-textarea>
+    </ion-item>
+    <ion-item *ngIf="address.hasError('required') && address.touched">
+            <p>*Address is Required</p>
+    </ion-item><br>
+              <button ion-button color="primary" round >Register</button>
+      
   </form>
 </ion-content>

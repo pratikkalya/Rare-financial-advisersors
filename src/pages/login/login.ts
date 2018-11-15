@@ -1,14 +1,13 @@
-import { Component , ViewChild} from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController,ToastController } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavController, NavParams, AlertController,ToastController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import { UserloginPage } from '../userlogin/userlogin';
 
-@IonicPage()
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
 })
-export class LoginPage {
+export class LoginPage{
   responseData : any;
   myData :any = {};
   localStoragekey: any;
@@ -17,18 +16,17 @@ export class LoginPage {
   // @ViewChild('username') uname;
   // @ViewChild('password') password;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl : AlertController,public restProvider : RestProvider,public toastController:ToastController) {
-  }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl : AlertController,public restProvider : RestProvider,public toastController:ToastController) { }
 
-  ionViewDidLoad() {
+  ionViewDidLoad(){
     console.log('ionViewDidLoad LoginPage');
   }
-
   onLogin(){
     this.restProvider.postData({email:this.myData.email, password: this.myData.password}, this.localStoragekey).then((result) =>{
       let addToast = this.toastController.create({
         message:"Login Sucessfull !!",
         duration:3000
+        
       });
       addToast.present();
       console.log('Login Sucessfully !!!');
@@ -36,11 +34,11 @@ export class LoginPage {
       console.log(this.responseData);
       localStorage.setItem('myData', JSON.stringify(this.responseData));
       this.navCtrl.push(UserloginPage);
-    }, (_err) => {
+    },(_err) =>{
       console.log('error');
       //Connection failed message
     });
-  }
+}
   // onLogin(){
   //   console.log(this.uname.value, this.password.value);
   //   if(this.uname.value == "admin" && this.password.value == "admin"){
