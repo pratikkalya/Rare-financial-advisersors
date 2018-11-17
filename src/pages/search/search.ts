@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 })
 export class SearchPage{
   users: any[];
-  apiUrl = 'http://192.168.100.6:8000/api/FundHouseall';
+  apiUrl = 'http://192.168.100.3:8000/api/FundHouseall';
   constructor(public navCtrl: NavController, public navParams: NavParams, public http:Http) { 
     let apiData = this.http.get(this.apiUrl).map(res=>res.json().data);
     apiData.subscribe(data => {

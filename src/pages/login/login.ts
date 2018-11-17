@@ -1,53 +1,61 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController,ToastController } from 'ionic-angular';
+import { NavController, NavParams, AlertController,ToastController, LoadingController, MenuController} from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 import { UserloginPage } from '../userlogin/userlogin';
-
+import { HomePage} from '../home/home'
 @Component({
   selector: 'page-login',
   templateUrl: 'login.html',
 })
 export class LoginPage{
   responseData : any;
-  myData :any = {};
+  data :any = {};
   localStoragekey: any;
   showLoader: any;
- 
+  
   // @ViewChild('username') uname;
   // @ViewChild('password') password;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl : AlertController,public restProvider : RestProvider,public toastController:ToastController) { }
-
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl : AlertController,public restProvider : RestProvider,public toastController:ToastController,public loadingCtrl: LoadingController,public menuCtrl: MenuController) {}
   ionViewDidLoad(){
     console.log('ionViewDidLoad LoginPage');
   }
   onLogin(){
-    this.restProvider.postData({email:this.myData.email, password: this.myData.password}, this.localStoragekey).then((result) =>{
-      let addToast = this.toastController.create({
-        message:"Login Sucessfull !!",
-        duration:3000
-        
+    this.restProvider.postData({email:this.data.email, password: this.data.password}, this.localStoragekey).then((result) =>{
+      const loader = this.loadingCtrl.create({
+        content: "Please wait...",
+        duration: 3000,
+        dismissOnPageChange: true
       });
-      addToast.present();
+      loader.present();
+      
+    //   let addToast;
+    //   addToast.onDismis(()=>{
+    //    addToast = this.toastController.create({
+    //     message:"Login Sucessfull !!",
+    //     duration:2000,
+    //     cssClass:"sucess"
+    //   });
+    //  })
+    //   addToast.present();
       console.log('Login Sucessfully !!!');
       this.responseData = result;
       console.log(this.responseData);
-      localStorage.setItem('myData', JSON.stringify(this.responseData));
-      this.navCtrl.push(UserloginPage);
+      localStorage.setItem('data', JSON.stringify(this.responseData));
+      this.navCtrl.setRoot(UserloginPage);
     },(_err) =>{
-      console.log('error');
+      let addToast = this.toastController.create({
+        message:"Invalid Email or Password !!",
+        duration:3000,
+        cssClass:"error"
+      });
+      addToast.present();
+      console.log('Login Failed !!!');
       //Connection failed message
     });
-}
-  // onLogin(){
-  //   console.log(this.uname.value, this.password.value);
-  //   if(this.uname.value == "admin" && this.password.value == "admin"){
-  //     let alert = this.alertCtrl.create({
-  //       title: 'Login Sucessfull !',
-  //       subTitle: 'You Are Logged In',
-  //       buttons: ['Dismiss']
-  //     });
-  //     alert.present();
-  //   }
-  // }
+  }
+
+  skip(){
+    this.navCtrl.setRoot(UserloginPage)
+  }
 }

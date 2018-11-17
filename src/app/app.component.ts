@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { MenuController } from 'ionic-angular';
 import { HomePage } from '../pages/home/home';
 @Component({
-  templateUrl: 'app.html'
+  templateUrl: 'app.html',
 })
 export class MyApp
 {

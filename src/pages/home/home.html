@@ -16,18 +16,25 @@
   <ion-content>
     <ion-list>
       <button ion-item (click)="signupPage()">
+        <!-- <div><img src = "../assets/imgs/register.png"/></div> -->
         <b>Signup</b> 
       </button>
       <button ion-item (click)="loginPage()">
+          <!-- <div><img src = "../assets/imgs/login.png"/></div> -->
         <b>Login</b>
       </button>
-      <button ion-item (click)="searchPage()">
+      <!-- <button ion-item (click)="searchPage()">
+          <div><img src = "../assets/imgs/service.png"/></div> 
         <b>Search</b>
+      </button> -->
+      <button style="position: absolute;bottom: 0px; text-align:center ; background-color:khaki; font-size: 25px"  ion-item (click)="kyc()">
+          <!-- <div><img src = "../assets/imgs/service.png"/></div>  -->
+        <b>e-kyc</b>
       </button>
     </ion-list>
   </ion-content>
 </ion-menu>
-<ion-nav id="nav" #content [root]="rootPage"></ion-nav>
+<ion-nav id="nav" #content [root]="rootPage" swipeBackEnabled="false"></ion-nav>
 
 <ion-content>
   <img src = "../assets/imgs/title.png"/>

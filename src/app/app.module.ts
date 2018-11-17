@@ -9,10 +9,17 @@ import { RegistrationPage } from '../pages/registration/registration';
 import { LoginPage } from '../pages/login/login';
 import { UserloginPage } from '../pages/userlogin/userlogin';
 import { SearchPage } from '../pages/search/search';
+import { SipPage } from '../pages/sip/sip';
+import { FundsPage } from '../pages/funds/funds';
+import { PlanningPage } from '../pages/planning/planning';
+import { SipCalculatorPage } from '../pages/sip-calculator/sip-calculator';
+import { TransactPage } from '../pages/transact/transact';
+
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { RestProvider } from '../providers/rest/rest';
-
+import { CallNumber } from '@ionic-native/call-number';
+import { KycPage } from '../pages/kyc/kyc';
 
 @NgModule({
   declarations:
@@ -23,6 +30,12 @@ import { RestProvider } from '../providers/rest/rest';
     LoginPage,
     UserloginPage,
     SearchPage,
+    SipPage,
+    FundsPage,
+    PlanningPage,
+    SipCalculatorPage,
+    TransactPage,
+    KycPage,
 
   ],
   imports:
@@ -41,7 +54,12 @@ import { RestProvider } from '../providers/rest/rest';
     LoginPage,
     UserloginPage,
     SearchPage,
-
+    SipPage,
+    FundsPage,
+    PlanningPage,
+    SipCalculatorPage,
+    TransactPage,
+    KycPage,
   ],
   providers:
   [
@@ -49,6 +67,7 @@ import { RestProvider } from '../providers/rest/rest';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestProvider,
+    CallNumber,
 
   ]
 })

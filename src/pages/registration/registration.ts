@@ -3,7 +3,8 @@ import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { Http ,Headers, RequestOptions} from '@angular/http';
 import {FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
 import { RestProvider } from '../../providers/rest/rest';
-import { HomePage } from '../home/home';
+import { LoginPage } from '../login/login';
+import { CssSelector } from '@angular/compiler';
 
 @Component({
   selector: 'page-registration',
@@ -60,7 +61,7 @@ export class RegistrationPage implements OnInit{
     headers.append("Content-Type", "application/json");
     headers.append("Accept", "application/json");
     let options = new RequestOptions({ headers:headers});
-    var api = "http://192.168.100.6:8000/api/register";
+    var api = "http://192.168.100.3:8000/api/register";
     var myData = JSON.stringify({name: this.data.name, email:this.data.email, password:this.data.password, c_password:this.data.c_password, phone_no: this.data.phone_no,bank_name: this.data.bank_name,account_no: this.data.account_no,pan_no: this.data.pan_no,address: this.data.address});
     
     return this.http.post(api, myData, options).subscribe(data => {
@@ -70,10 +71,16 @@ export class RegistrationPage implements OnInit{
       });
       addToast.present();
       console.log(data);
-      this.navCtrl.push(HomePage);
+      this.navCtrl.push(LoginPage);
       console.log("You register sucessfully !!");
-    },error => {
-      console.log(error);
+    },(_error) => {
+      let addToast = this.toastController.create({
+        message:"All fields are required! Password Must be at least 6 characters long.",
+        duration:4000,
+        cssClass:"error"
+      });
+      addToast.present();
+      console.log("Registration Failed !!");
     });
     }
 }

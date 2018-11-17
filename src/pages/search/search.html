@@ -4,19 +4,20 @@
   </ion-navbar>
 </ion-header>
   <ion-content>
+      <img src = "../assets/imgs/search.jpg"/>
     <ion-list class="accordion-list">
       <ion-list-header *ngFor = "let data of users; let i = index" no-lines no-padding>
         <button ion-item (click)="toggleSection(i)" detail-none [ngClass]="{'section-active':data.open, 'section':!data.open}">
-          <ion-icon item-left name="arrow-dropright" *ngIf="!data.open"></ion-icon>
-          <ion-icon item-left name="arrow-dropdown" *ngIf="data.open"></ion-icon>
+          <ion-icon item-left name="ios-arrow-dropright" *ngIf="!data.open"></ion-icon>
+          <ion-icon item-left name="ios-arrow-dropdown" *ngIf="data.open"></ion-icon>
            <h1>{{data.fund_name}}</h1>
            <p text-lowercase>{{data.launch_date}}</p>
         </button>
-        <ion-list *ngIf="data.categories && data.open" no-lines>
-            <ion-list-header *ngFor = "let child of data.categories; let j = index" no-padding>
+        <ion-list *ngIf="data.categories && data.open" no-lines no-padding>
+            <ion-list-header *ngFor = "let child of data.categories; let j = index" no-lines no-padding>
                 <button ion-item (click)="toggleItem(i, j)" detail-none  [ngClass]="{'section-active':child.open, 'section':!child.open}">
-                    <ion-icon item-left name="add-circle" *ngIf="!child.open"></ion-icon>
-                    <ion-icon item-left name="close-circle" *ngIf="child.open"></ion-icon>
+                    <ion-icon item-left name="ios-add-circle-outline" *ngIf="!child.open"></ion-icon>
+                    <ion-icon item-left name="ios-close-circle-outline" *ngIf="child.open"></ion-icon>
                     <h2>{{child.fund_scheme}}</h2>
                 </button>
                   <!-- <ion-item **ngIf="child.fundtype && child.open" detail-none Class="child-item" text-wrap>

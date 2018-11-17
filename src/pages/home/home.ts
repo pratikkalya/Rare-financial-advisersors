@@ -4,6 +4,8 @@ import { RegistrationPage } from '../registration/registration';
 import { LoginPage } from '../login/login';
 import { SearchPage } from '../search/search';
 import { RestProvider } from '../../providers/rest/rest';
+import { UserloginPage } from '../userlogin/userlogin';
+import { KycPage } from '../kyc/kyc';
 
 @Component({
   selector: 'page-home',
@@ -32,7 +34,10 @@ export class HomePage{
   loginPage(){
     this.navCtrl.push(LoginPage);
   }
-  searchPage(){
-    this.navCtrl.push(SearchPage);
+  // searchPage(){
+  //   this.navCtrl.push(UserloginPage);
+  // }
+  kyc(){
+    this.navCtrl.push(KycPage);
   }
 }
